@@ -1,21 +1,33 @@
 import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useWishlist from "../hooks/useWishlist";
 
 const ProductCard = ({ product }) => {
   const { cart, addToCart, increaseQty, decreaseQty } = useCart();
+  const { wishlist, toggleWishlist } = useWishlist();
 
   // Find if product is already in cart
   const cartItem = cart.find((item) => item.id === product.id);
+  const isInWishlist = wishlist.some((item) => item.id === product.id);
 
   return (
-    <div className="border rounded-lg p-4 shadow hover:shadow-lg transition">
+    <div className="relative border rounded-lg p-4 shadow hover:shadow-lg transition">
+      <button
+        onClick={() => toggleWishlist(product)}
+        className="absolute top-3 right-3 text-xl"
+        aria-label={
+          isInWishlist ? "Remove from wishlist" : "Add to wishlist"
+        }
+      >
+        {isInWishlist ? "❤️" : "🤍"}
+      </button>
       
       {/* Image */}
-      <div className="h-40 flex items-center justify-center bg-white mb-3">
+      <div className="h-44 w-full overflow-hidden flex items-center justify-center bg-white mb-3">
         <img
           src={product.thumbnail}
           alt={product.title}
-          className="max-h-full object-contain"
+          className="h-full w-full object-contain"
         />
       </div>
 

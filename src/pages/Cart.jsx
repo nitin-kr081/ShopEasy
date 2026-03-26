@@ -1,9 +1,11 @@
 import useCart from "../hooks/useCart";
 import CartItem from "../components/CartItem";
 import { calculateTotal } from "../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cart } = useCart();
+  const navigate = useNavigate();
 
   const total = calculateTotal(cart);
 
@@ -30,6 +32,12 @@ const Cart = () => {
             <h2 className="text-xl font-bold">
               Total: ${total.toFixed(2)}
             </h2>
+            <button
+              onClick={() => navigate("/checkout")}
+              className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Proceed to Checkout
+            </button>
           </div>
         </>
       )}

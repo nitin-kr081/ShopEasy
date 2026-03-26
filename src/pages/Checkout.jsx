@@ -4,7 +4,9 @@ import { calculateTotal } from "../utils/helpers";
 const Checkout = () => {
   const { cart } = useCart();
 
-  const total = calculateTotal(cart);
+  const subtotal = calculateTotal(cart);
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
 
   return (
     <div className="p-6">
@@ -36,6 +38,10 @@ const Checkout = () => {
 
           {/* Total */}
           <div className="mt-6 text-right">
+            <p className="text-gray-700">
+              Subtotal: ${subtotal.toFixed(2)}
+            </p>
+            <p className="text-gray-700">Tax (10%): ${tax.toFixed(2)}</p>
             <h2 className="text-xl font-bold">
               Total: ${total.toFixed(2)}
             </h2>

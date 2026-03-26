@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useWishlist from "../hooks/useWishlist";
 
 const Navbar = () => {
   const { cart } = useCart();
+  const { wishlist } = useWishlist();
 
   // Total items in cart
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -20,6 +22,10 @@ const Navbar = () => {
         {/* <Link to="/products" className="hover:underline">
           Products
         </Link> */}
+
+        <Link to="/wishlist" className="relative hover:underline">
+          Wishlist ({wishlist.length})
+        </Link>
 
         <Link to="/cart" className="relative hover:underline">
           🛒 Cart ({totalItems})
