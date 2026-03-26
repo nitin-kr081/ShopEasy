@@ -9,7 +9,7 @@ const Checkout = () => {
   const total = subtotal + tax;
 
   return (
-    <div className="p-6">
+    <div className="px-4 sm:px-6 py-4 sm:py-6 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">Checkout 💳</h1>
 
       {/* Empty Cart */}
@@ -20,16 +20,16 @@ const Checkout = () => {
       {/* Order Summary */}
       {cart.length > 0 && (
         <>
-          <div className="space-y-3">
+          <div className="space-y-3 border rounded-lg p-4 sm:p-5 bg-white">
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="flex justify-between border-b pb-2"
+                className="flex justify-between gap-3 border-b pb-2 text-sm sm:text-base"
               >
-                <span>
+                <span className="break-words">
                   {item.title} × {item.quantity}
                 </span>
-                <span>
+                <span className="whitespace-nowrap">
                   ${(item.price * item.quantity).toFixed(2)}
                 </span>
               </div>
@@ -37,7 +37,7 @@ const Checkout = () => {
           </div>
 
           {/* Total */}
-          <div className="mt-6 text-right">
+          <div className="mt-6 text-right border rounded-lg p-4 sm:p-5 bg-gray-50">
             <p className="text-gray-700">
               Subtotal: ${subtotal.toFixed(2)}
             </p>
@@ -48,7 +48,7 @@ const Checkout = () => {
           </div>
 
           {/* Button */}
-          <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full sm:w-auto">
             Place Order
           </button>
         </>

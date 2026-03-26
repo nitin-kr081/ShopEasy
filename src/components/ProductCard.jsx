@@ -11,10 +11,10 @@ const ProductCard = ({ product }) => {
   const isInWishlist = wishlist.some((item) => item.id === product.id);
 
   return (
-    <div className="relative border rounded-lg p-4 shadow hover:shadow-lg transition">
+    <div className="relative border rounded-lg p-3 sm:p-4 shadow hover:shadow-lg transition h-full flex flex-col">
       <button
         onClick={() => toggleWishlist(product)}
-        className="absolute top-3 right-3 text-xl"
+        className="absolute top-2 right-2 sm:top-3 sm:right-3 text-xl"
         aria-label={
           isInWishlist ? "Remove from wishlist" : "Add to wishlist"
         }
@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
       </button>
       
       {/* Image */}
-      <div className="h-44 w-full overflow-hidden flex items-center justify-center bg-white mb-3">
+      <div className="h-40 sm:h-44 w-full overflow-hidden flex items-center justify-center bg-white mb-3 rounded">
         <img
           src={product.thumbnail}
           alt={product.title}
@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
 
       {/* Title */}
       <Link to={`/product/${product.id}`}>
-        <h2 className="text-lg font-semibold hover:underline">
+        <h2 className="text-base sm:text-lg font-semibold hover:underline line-clamp-2 pr-8">
           {product.title}
         </h2>
       </Link>
@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
       </p>
 
       {/* Price + Controls */}
-      <div className="flex justify-between items-center mt-3">
+      <div className="flex justify-between items-center gap-2 mt-auto pt-2">
         <span className="text-green-600 font-bold">
           ${product.price}
         </span>
@@ -53,7 +53,7 @@ const ProductCard = ({ product }) => {
         {!cartItem && (
           <button
             onClick={() => addToCart(product)}
-            className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+            className="bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 text-sm sm:text-base"
           >
             ➕ Add
           </button>
@@ -64,7 +64,7 @@ const ProductCard = ({ product }) => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => decreaseQty(product.id)}
-              className="px-2 bg-gray-300 rounded"
+              className="px-2 py-1 bg-gray-300 rounded"
             >
               ➖
             </button>
@@ -73,7 +73,7 @@ const ProductCard = ({ product }) => {
 
             <button
               onClick={() => increaseQty(product.id)}
-              className="px-2 bg-gray-300 rounded"
+              className="px-2 py-1 bg-gray-300 rounded"
             >
               ➕
             </button>

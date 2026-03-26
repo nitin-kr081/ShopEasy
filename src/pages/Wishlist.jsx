@@ -5,7 +5,7 @@ const Wishlist = () => {
   const { wishlist } = useWishlist();
 
   return (
-    <div className="p-6">
+    <div className="px-4 sm:px-6 py-4 sm:py-6 max-w-7xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">Wishlist ❤️</h1>
 
       {/* Empty Wishlist */}

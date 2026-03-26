@@ -10,7 +10,7 @@ const Cart = () => {
   const total = calculateTotal(cart);
 
   return (
-    <div className="p-6">
+    <div className="px-4 sm:px-6 py-4 sm:py-6 max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
 
       {/* Empty Cart */}
@@ -34,7 +34,7 @@ const Cart = () => {
             </h2>
             <button
               onClick={() => navigate("/checkout")}
-              className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="mt-3 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
             >
               Proceed to Checkout
             </button>
